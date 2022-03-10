@@ -17,19 +17,21 @@ on:
     paths:
       - '**.py'
 
-env:
-  LANG: en_US.utf-8
-  LC_ALL: en_US.utf-8
-  PYTHON_VERSION: '3.8'
 
 jobs:
 
   dispatch:
     runs-on: ubuntu-20.04
+    
+    env:
+      LANG: en_US.utf-8
+      LC_ALL: en_US.utf-8
+      PYTHON_VERSION: '3.8'
+      OWNER: bonicim
 
     strategy:
       matrix:
-        repo: [ 'VOLTTRON/volttron-openadr-ven', 'VOLTTRON/volttron-listener-agent' ]
+        repo: [ '${{ env.OWNER }}/volttron-openadr-ven', '${{ env.OWNER }}/volttron-listener-agent' ]
 
     steps:
         - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
